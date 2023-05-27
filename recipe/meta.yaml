@@ -16,7 +16,7 @@ build:
     - sdfgcc = dace.cli.sdfgcc:main
     - sdprof = dace.cli.sdprof:main
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
