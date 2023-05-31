@@ -36,7 +36,6 @@ requirements:
     - idna >=2.10
     - itsdangerous >=2.0.0
     - jinja2 >=3.0.0
-    - markupsafe >=2.0.0
     - mpmath >=1.1.0
     - networkx >=2.5
     - numpy >=1.21
@@ -50,7 +49,7 @@ requirements:
     - sympy ==1.9
     - urllib3 >=1.26.5
     - websockets >=9.1
-    - werkzeug >=2.2.3
+    - werkzeug >=2.2
     - dill
     - pyreadline  # [win]
     - dataclasses  # [py<37]
