@@ -1,5 +1,5 @@
 {% set name = "dace" %}
-{% set version = "0.14.3" %}
+{% set version = "0.14.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/dace-{{ version }}.tar.gz
-  sha256: 7c8280d84b747b36609c557527d8f42a8d955275492e15af20dea7ec1918c4a6
+  sha256: 3485527b8acc75ec685ed20bdf582b9a03201097a7d26a625bacfcff8f278431
 
 build:
   entry_points:
