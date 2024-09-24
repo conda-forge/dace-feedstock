@@ -1,5 +1,5 @@
 {% set name = "dace" %}
-{% set version = "0.14.4" %}
+{% set version = "0.16.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,49 +7,57 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/dace-{{ version }}.tar.gz
-  sha256: 3485527b8acc75ec685ed20bdf582b9a03201097a7d26a625bacfcff8f278431
+  sha256: 9aef845f2f11964b587839a9ee3b4f914342b84d1d745aef44ace5227c3903f3
 
 build:
+  skip: true  # [py>=313]
   entry_points:
     - dacelab = dace.cli.dacelab:main
     - sdfv = dace.cli.sdfv:main
     - sdfgcc = dace.cli.sdfgcc:main
-    - sdprof = dace.cli.sdprof:main
-  script: {{ PYTHON }} -m pip install . -vv
+    - fcfd = dace.cli.fcdc:main
+    - daceprof = dace.cli.daceprof:main
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
     - python
     - pip
-    - cmake >=3.18
+    - scikit-build 
+    - cmake
+    - conda-forge::setuptools_scm
   run:
     - python
-    - aenum >=3.1
-    - astunparse
-    - chardet >=3.0.4
-    - cmake >=3.18
-    - dill
-    - flask
+    - {{ pin_compatible('numpy') }} 
+    - cmake
+    - scikit-build
+    - numpy <2.0
     - networkx >=2.5
-    - numpy
-    - ply
-    - pyyaml
-    - requests
+    - astunparse
     - sympy >=1.9
+    - pyyaml
+    - ply
     - websockets
+    - jinja2
+    - conda-forge::fparser >=0.1.3
+    - conda-forge::setuptools_scm
+    - aenum >=3.1
+    - dataclasses
+    - dill
     - pyreadline  # [win]
-    - dataclasses  # [py<37]
     - typing-compat  # [py<38]
 
 test:
   imports:
     - dace
   commands:
-    - sdfgcc --help
-    - dacelab --help
-  commands:
     - pip check
+    - dacelab --help
+    - sdfv --help
+    - sdfgcc --help
+    - fcfd --help
+    - daceprof --help
   requires:
     - pip
 
@@ -57,7 +65,13 @@ about:
   home: https://github.com/spcl/dace
   summary: Data-Centric Parallel Programming Framework
   license: BSD-3-Clause
-  license_file: LICENSE
+  license_file:
+    - LICENSE
+    - dace/viewer/webclient/LICENSE
+    - dace/external/cub/LICENSE.TXT
+    - dace/external/moodycamel/LICENSE.md
+    - dace/external/moodycamel/tests/relacy/relacy/LICENSE
+    - dace/external/hlslib/LICENSE.md
 
 extra:
   recipe-maintainers:
