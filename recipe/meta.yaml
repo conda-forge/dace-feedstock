@@ -77,3 +77,9 @@ extra:
   recipe-maintainers:
     - tbennun
     - lukastruemper
+
+channel_priority: strict
+conda_build:
+  channels:
+    - conda-forge
+    - defaults
