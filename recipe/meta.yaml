@@ -32,7 +32,6 @@ requirements:
     - {{ pin_compatible('numpy') }} 
     - cmake
     - scikit-build
-    - fparser >=0.1.3
     - numpy <2.0
     - networkx >=2.5
     - astunparse
@@ -41,7 +40,7 @@ requirements:
     - ply
     - websockets
     - jinja2
-    - conda-forge::fparser >=0.1.3
+    - conda-forge::fparser ==0.1.4
     - conda-forge::setuptools_scm
     - aenum >=3.1
     - dataclasses
