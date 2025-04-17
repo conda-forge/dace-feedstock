@@ -6,7 +6,7 @@ package:
  version: {{ version }}
    
 source:
- url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/dace-{{ version }}.tar.gz
+ url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/dace-{{ version }}.tar.gz
  sha256: 6728f4bcf584b9f5bbb9c9a393fbdd87364af0c6ad9120da0302b8b470f4f71c
 
 build:
@@ -27,6 +27,7 @@ requirements:
    - setuptools
    - scikit-build
  run:
+   - python
    - numpy <2.0
    - networkx >=2.5
    - astunparse
