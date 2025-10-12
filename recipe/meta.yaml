@@ -17,7 +17,7 @@ build:
    - fcfd = dace.cli.fcdc:main
    - daceprof = dace.cli.daceprof:main
  script: {{ PYTHON }} -m pip install . -vv
- number: 0
+ number: 1
 
 requirements:
  host:
